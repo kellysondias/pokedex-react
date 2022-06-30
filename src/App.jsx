@@ -7,15 +7,15 @@ function App() {
   const [pokemon, setPokemon] = useState([])
 
   useEffect(() => {
-   async function fetchData () {
-    const namesResponse = await getNamePokemon()
-    const setPokemonList = namesResponse.map(async (name) => {
-      return await getPokemon(name)
-    })
-    return setPokemonList
-  }
-  /* fetchData() */
-  setPokemon(fetchData())
+    async function fetchData () {
+      const namesResponse = await getNamePokemon()
+      const pokemonList = namesResponse.map(async (name) => {
+        await getPokemon(name)
+      })
+      const allPokemon = await Promise.all(pokemonList)
+      setPokemon(allPokemon)
+    }
+    fetchData()
   }, [])
 
   return (
