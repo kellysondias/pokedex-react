@@ -3,13 +3,13 @@ const pokemonLength = 10
 const offsetValue = 0
 
 export async function getPokemon(name) {
-    const url = await fetch(`${baseUrl}/${name}`)
-    return await url.json()
+    const response = await fetch(`${baseUrl}/${name}`)
+    return await response.json()
 }
 
 export async function getNamePokemon() {
-    const url = await fetch(`${baseUrl}?limit=${pokemonLength}&offset=${offsetValue}`)
-    const json = await url.json()
-    const pokemonListName = json.results.map(pokemon => pokemon.name)
-    return pokemonListName
+    const response = await fetch(`${baseUrl}?limit=${pokemonLength}&offset=${offsetValue}`)
+    const json = await response.json()
+    const pokemonNameList = json.results.map(pokemon => pokemon.name)
+    return pokemonNameList
 }
