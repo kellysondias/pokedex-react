@@ -19,6 +19,8 @@ function App() {
     fetchData()
   }, [load])
 
+  console.log(pokedex)
+
   return (
     <>
       <GlobalStyle />
