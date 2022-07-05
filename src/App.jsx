@@ -1,32 +1,35 @@
 import { useEffect, useState } from 'react';
 import { createGlobalStyle } from 'styled-components'
 import { Header } from './components/header/header';
-import { getNamePokemon, getPokemon, pokemonLoad } from './services/endpoints';
+import { getNamePokemon, getPokemon } from './services/endpoints';
 
 function App() {
   const [pokedex, setPokedex] = useState([])
+  const [load, setLoad] = useState(10)
+
+  const pagination = 10
 
   useEffect(() => {
     async function fetchData() {
-      const namesResponse = await getNamePokemon()
+      const namesResponse = await getNamePokemon(load)
       const pokeList = namesResponse.map(async name => await getPokemon(name))
       let allPokelist = await Promise.all(pokeList)
       setPokedex(allPokelist)
     }
     fetchData()
-  }, [])
-  /* console.log(pokedex) */
+  }, [load])
+
   return (
     <>
       <GlobalStyle />
       <Header />
-      {pokedex.map((pokemon, index) => {
+      <ul>
+       {pokedex.map((pokemon, index) => {
         const typeNames = pokemon.types.map(type => type.type.name)
         const [firstType, secondType] = typeNames
         let maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
 
-        return <ul key={index}>
-        <li>
+        return <li key={index}>
            <div>
              <div>
                <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
@@ -39,9 +42,10 @@ function App() {
              </div>
            </div>
          </li>
-       </ul>
       })}
-      <button onClick={() => pokemonLoad += pokemonLoad}>Load more Pokémon</button>
+      </ul>
+
+      <button onClick={() => setLoad(load + pagination)}>Load more Pokémon</button>
     </>
   );
 }
