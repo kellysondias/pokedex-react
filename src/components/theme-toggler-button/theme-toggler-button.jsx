@@ -1,13 +1,17 @@
-import React, { useContext } from 'react'
-import { ThemeContext, themes } from "../../contexts/theme-context"
-import { Button } from '../button/button'
+import React, { useContext, useState } from 'react'
+import styled from 'styled-components'
+import { ThemeContext, themes } from '../../contexts/theme-switcher'
 
 export const ThemeTogglerButton = () => {
     const {theme, setTheme} = useContext(ThemeContext)
 
     return (
         <div>
-            <Button onClick={() => setTheme(theme === themes.light ? themes.dark : themes.light)}>Clique aqui</Button>
+            <img src={theme.image} alt={theme.alt} onClick={() => setTheme(theme === themes.solrock ? themes.lunatone : themes.solrock)}/>
         </div>
     )
 }
+
+const Switcher = styled.img`
+
+`

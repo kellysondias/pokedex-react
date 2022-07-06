@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { createGlobalStyle } from 'styled-components'
+import { ThemeProvider } from './contexts/theme-switcher';
 import { Header } from './components/header/header';
 import { getNamePokemon, getPokemon } from './services/endpoints';
 
@@ -19,35 +20,37 @@ function App() {
     fetchData()
   }, [load])
 
-  console.log(pokedex)
+  /* console.log(pokedex) */
 
   return (
     <>
-      <GlobalStyle />
-      <Header />
-      <ul>
-       {pokedex.map((pokemon, index) => {
-        const typeNames = pokemon.types.map(type => type.type.name)
-        const [firstType, secondType] = typeNames
-        let maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
-
-        return <li key={index}>
-           <div>
+      <ThemeProvider>
+        <GlobalStyle />
+        <Header/>
+        <ul>
+         {pokedex.map((pokemon, index) => {
+          const typeNames = pokemon.types.map(type => type.type.name)
+          const [firstType, secondType] = typeNames
+          let maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
+  
+          return <li key={index}>
              <div>
-               <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
-               <span>{pokemon.name}</span>
-               {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
+               <div>
+                 <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
+                 <span>{pokemon.name}</span>
+                 {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
+               </div>
+               <div>
+                 <span>{firstType}</span>
+                 {secondType && <span>{secondType}</span>}
+               </div>
              </div>
-             <div>
-               <span>{firstType}</span>
-               {secondType && <span>{secondType}</span>}
-             </div>
-           </div>
-         </li>
-      })}
-      </ul>
-
-      <button onClick={() => setLoad(load + pagination)}>Load more Pokémon</button>
+           </li>
+        })}
+        </ul>
+  
+        <button onClick={() => setLoad(load + pagination)}>Load more Pokémon</button>
+      </ThemeProvider>
     </>
   );
 }
@@ -60,6 +63,12 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    background-color: theme.background;
+    color: theme.color; 
+  }
+
+  body {
+    font-family: 'Press Start 2P', monospace;
   }
 `
 

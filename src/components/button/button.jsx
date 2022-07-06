@@ -1,12 +1,16 @@
 import React, { useContext } from 'react'
-import { ThemeContext } from "../../contexts/theme-context"
+import { ThemeContext } from '../../contexts/theme-switcher'
 
 export const Button = props => {
 
     const { theme } = useContext(ThemeContext)
 
     return (
-        <button {...props}/>
+        <button style={{
+            border: "none",
+            backgroundColor: theme.background
+
+        }} {...props}/>
     )
 }
 
