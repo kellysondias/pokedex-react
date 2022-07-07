@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from './contexts/theme-switcher';
 import { Header } from './components/header/header';
+import {Button} from './components/button/button'
 import { getNamePokemon, getPokemon } from './services/endpoints';
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
              <div>
                <div>
                  <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
-                 <span>{pokemon.name}</span>
+                 <span>{pokemon.name.toUpperCase()}</span>
                  {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
                </div>
                <div>
@@ -49,7 +50,7 @@ function App() {
         })}
         </ul>
   
-        <button onClick={() => setLoad(load + pagination)}>Load more Pokémon</button>
+        <Button onClick={() => setLoad(load + pagination)}>Load more Pokémon</Button>
       </ThemeProvider>
     </>
   );
@@ -68,7 +69,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Press Start 2P', monospace;
+    font-family: 'VT323', monospace;
   }
 `
 
