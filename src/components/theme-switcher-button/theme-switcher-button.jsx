@@ -17,7 +17,8 @@ export const ThemeSwitcherButton = () => {
 
 const Switcher = styled.div`
     display: flex;
-    @media (max-width: 592px) {
+    @media (max-width: 620px) {
         align-self: flex-end;
+        max-width: 61px;
     }
 `
