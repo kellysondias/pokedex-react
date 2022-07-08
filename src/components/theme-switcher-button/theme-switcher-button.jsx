@@ -20,5 +20,6 @@ const Switcher = styled.div`
     @media (max-width: 620px) {
         align-self: flex-end;
         max-width: 61px;
+        margin-right: 15px;
     }
 `

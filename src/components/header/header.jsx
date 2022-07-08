@@ -21,9 +21,9 @@ const Heading = styled.header`
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', monospace;
     color: ${props => props.theme.headerColor};
-    background-color: ${props => props.theme.background};
+    background-color: ${props => props.theme.headerBackground};
     padding-top: 5px;
 
     h1 {
@@ -39,10 +39,6 @@ const Heading = styled.header`
         h1 {
             margin-left: 0;
             text-align: center;
-        }
-
-        img {
-            max-width: 61px;
         }
     }
 `

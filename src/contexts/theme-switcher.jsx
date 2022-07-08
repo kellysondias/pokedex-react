@@ -4,15 +4,17 @@ import lunatoneSprite from '../img/lunatone.png'
 
 export const themes = {
     solrock: {
-        color: '#000',
-        background: '#9e2a28',
+        color: '#6d6d6b',
+        background: '#e3f3ed',
+        headerBackground: '#9e2a28',
         headerColor: '#fff',
         image: lunatoneSprite,
         alt: "Switch to 'dark mode'"
     },
     lunatone: {
-        color: '#fff',
-        background: '#252938',
+        color: '#f4f4f3',
+        background: '#58596f',
+        headerBackground: '#010a2e',
         headerColor: '#fff',
         image: solrockSprite,
         alt: "Switch to 'light mode'"
