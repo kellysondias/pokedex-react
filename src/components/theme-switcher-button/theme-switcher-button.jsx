@@ -7,19 +7,32 @@ export const ThemeSwitcherButton = () => {
 
     return (
         <Switcher>
-            <img style={{
-                cursor: 'pointer',
-                maxWidth: '76px',   
-            }} src={theme.image} alt={theme.alt} onClick={() => setTheme(theme === themes.solrock ? themes.lunatone : themes.solrock)}/>
+            <img src={theme.image} alt={theme.alt} onClick={() => setTheme(theme === themes.solrock ? themes.lunatone : themes.solrock)}/>
         </Switcher>
     )
 }
 
 const Switcher = styled.div`
+    
     display: flex;
+
+    img {
+        cursor: pointer;
+        max-width: 76px;
+    }
+
     @media (max-width: 620px) {
         align-self: flex-end;
-        max-width: 61px;
         margin-right: 15px;
+
+        img {
+            max-width: 61px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        img {
+            max-width: 58px;
+        }
     }
 `
