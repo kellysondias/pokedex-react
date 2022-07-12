@@ -44,7 +44,7 @@ export const Pokedex = () => {
             })}
         </PokedexResults>
 
-        <LoadingButton className='hover' theme={theme} onClick={() => setLoad(load + pagination)}>Load more Pokémon</LoadingButton>
+        <LoadingButton theme={theme} onClick={() => setLoad(load + pagination)}>Load more Pokémon</LoadingButton>
     </PokedexSection>
     )
 }
