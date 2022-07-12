@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { getNamePokemon, getPokemon } from '../../services/endpoints';
 import { ThemeContext } from '../../contexts/theme-switcher';
+import pokeball from '../../img/pokeball.png'
+import openedPokeball from '../../img/opened-pokeball.png'
 import styled from 'styled-components';
 
 export const Pokedex = () => {
@@ -107,17 +109,38 @@ const PokeTypes = styled.div`
 const LoadingButton = styled.button `
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 2rem auto; 
     cursor: pointer; 
-    padding: 1.2rem;
+    padding: 0.3rem 1.1rem;
     border-radius: 20px;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    letter-spacing: -1.5px;
+    word-spacing: -4px;
     font-family: 'VT323', monospace;
     text-transform: uppercase;
+    text-align: center;
     background-color: ${props => props.theme.buttonBackground};
     color: ${props => props.theme.color}; 
-    border: 5px solid ${props => props.theme.background};
+    border: 0.5rem solid ${props => props.theme.background};
+
+    ::before {
+        content: "";
+        background: url(${pokeball}) no-repeat center center;
+        background-size: contain;
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        margin-right: 0.7rem;
+    }
+
     :hover {
         border-color: ${props => props.theme.buttonBorder}
+    }
+
+    :hover::before {
+        content: "";
+        background: url(${openedPokeball}) no-repeat center center;
+        background-size: contain;
     }
 `
