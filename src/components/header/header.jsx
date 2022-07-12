@@ -29,12 +29,12 @@ const Heading = styled.header`
     h1 {
         font-size: 3.5rem;
         font-weight: '400';
-        margin-left: 24px;
+        margin-left: 2.4rem;
     }
 
     @media (max-width: 620px) {
         flex-direction: column-reverse;
-        padding-bottom: 32px;
+        padding-bottom: 3.2rem;
 
         h1 {
             margin-left: 0;

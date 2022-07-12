@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from 'react';
-import {Button} from '../button/button'
 import { getNamePokemon, getPokemon } from '../../services/endpoints';
 import { ThemeContext } from '../../contexts/theme-switcher';
 import styled from 'styled-components';
@@ -33,7 +32,7 @@ export const Pokedex = () => {
                         <PokeCard theme={theme}>
                             <PokeId>
                                 <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
-                                <span>{pokemon.name.toUpperCase()}</span>
+                                <span>{pokemon.name}</span>
                                 {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
                             </PokeId>
                             <PokeTypes>
@@ -45,7 +44,7 @@ export const Pokedex = () => {
             })}
         </PokedexResults>
 
-        <Button style={{margin: '0 auto', cursor: 'pointer'}} onClick={() => setLoad(load + pagination)}>Load more Pokémon</Button>
+        <LoadingButton className='hover' theme={theme} onClick={() => setLoad(load + pagination)}>Load more Pokémon</LoadingButton>
     </PokedexSection>
     )
 }
@@ -68,10 +67,10 @@ const PokeCard = styled.div`
     display: flex;
     flex-flow: column nowrap;
     background-color: ${props => props.theme.cardBackground};
-    margin: 10px;
+    margin: 1.0rem;
     border-radius: 5%;
-    border: 5px solid ${props => props.theme.border};
-    padding: 20px;
+    border: 0.5rem solid ${props => props.theme.border};
+    padding: 2rem;
     max-width: 255px;
     
     div {
@@ -81,7 +80,7 @@ const PokeCard = styled.div`
     }
 
     img {
-        margin: 10px auto;
+        margin: 1rem auto;
         width: 100%;
     }
 
@@ -93,13 +92,32 @@ const PokeCard = styled.div`
 
 const PokeId = styled.div`
     justify-content: center;
+    text-transform: uppercase;
 
     span:last-child {
-        margin-left: 5px;
+        margin-left: 0.5rem;
     }
 `
 
 const PokeTypes = styled.div`
-    margin-top: 5px;
+    margin-top: 0.5rem;
     justify-content: space-evenly;
+`
+
+const LoadingButton = styled.button `
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto; 
+    cursor: pointer; 
+    padding: 1.2rem;
+    border-radius: 20px;
+    font-size: 2.5rem;
+    font-family: 'VT323', monospace;
+    text-transform: uppercase;
+    background-color: ${props => props.theme.buttonBackground};
+    color: ${props => props.theme.color}; 
+    border: 5px solid ${props => props.theme.background};
+    :hover {
+        border-color: ${props => props.theme.buttonBorder}
+    }
 `
