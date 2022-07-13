@@ -22,6 +22,14 @@ const GlobalStyle = createGlobalStyle`
       padding: 0;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+
   html {
     font-size: 62.5%;
     background-color: theme.background;
@@ -30,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'VT323', monospace;
+  }
+
+  ol, ul {
+    list-style: none;
   }
 `
 
