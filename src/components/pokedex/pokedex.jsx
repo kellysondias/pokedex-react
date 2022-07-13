@@ -55,6 +55,7 @@ const PokedexSection = styled.section`
     display: flex;
     flex-flow: column nowrap;
     min-height: 100vh;
+    padding-top: 12px;
     background-color: ${props => props.theme.background}
 `
 
@@ -129,8 +130,8 @@ const LoadingButton = styled.button `
         background: url(${pokeball}) no-repeat center center;
         background-size: contain;
         display: inline-block;
-        width: 80px;
-        height: 80px;
+        width: 57px;
+        height: 62px;
         margin-right: 0.7rem;
     }
 
@@ -142,5 +143,14 @@ const LoadingButton = styled.button `
         content: "";
         background: url(${openedPokeball}) no-repeat center center;
         background-size: contain;
+    }
+
+    @media (max-width: 545px) {
+        font-size: 2.5rem;
+
+        ::before {
+            width: 40px;
+            height: 48px;
+        }
     }
 `

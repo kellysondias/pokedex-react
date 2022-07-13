@@ -4,28 +4,28 @@ import lunatoneSprite from '../img/lunatone.png'
 
 export const themes = {
     solrock: {
-        color: '#f4f4f3',
+        alt: "Switch to 'dark mode'",
         background: '#e3f3ed',
-        cardBackground: '#3890d6',
-        headerBackground: '#9e2a28',
+        border: '#484860',
         buttonBackground: '#a071ee',
         buttonBorder: '#ef713f',
-        headerColor: '#fff',
-        border: '#484860',
-        image: lunatoneSprite,
-        alt: "Switch to 'dark mode'"
+        cardBackground: '#3890d6',
+        color: '#f4f4f3',
+        headerBackground: '#9e2a28',
+        headerColor: '#f4f4f3',
+        image: lunatoneSprite
     },
     lunatone: {
-        color: '#e2e2e2',
+        alt: "Switch to 'light mode'",
         background: '#58596f',
-        cardBackground: '#114269',
-        headerBackground: '#010a2e',
+        border: '#0e0c0c',
         buttonBackground: '#27193f',
         buttonBorder: '#5825a8',
-        headerColor: '#fff',
-        border: '#0e0c0c',
-        image: solrockSprite,
-        alt: "Switch to 'light mode'"
+        cardBackground: '#114269',
+        color: '#e2e2e2',
+        headerBackground: '#010a2e',
+        headerColor: '#e2e2e2',
+        image: solrockSprite
     }
 }
 
