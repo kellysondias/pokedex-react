@@ -145,7 +145,7 @@ const LoadingButton = styled.button `
         background-size: contain;
     }
 
-    @media (max-width: 545px) {
+    @media (max-width: 546px) {
         font-size: 2.5rem;
 
         ::before {
