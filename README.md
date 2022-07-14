@@ -17,27 +17,23 @@
  
  <img style="width: 250px;" src="src/img/cachorro-violinista.jpg" alt="Ae cachorro violinista, toca um Changes - Black Sabbath que o pai tá passando por mudanças ;(">
 
- ### Pokédex: <span style="color: lightgreen;">Alpha</span> (não finalizado) 👨‍💻.
+ ### Pokédex: Alpha (não finalizado) 👨‍💻.
 
  <br>
 
 ## Sobre
   
-  Este site é uma pokédex contendo todos os pokémon registrados na API <a href="https://pokeapi.co/">PokéAPI</a>, a API pública e oficial do Pokémon! Você pode acessar o site <a href="https://pokedex-react-seven-sage.vercel.app/">clicando aqui</a></li>!
-
-   <br>
+  O site neste portfólio é uma pokédex contendo todos os pokémon registrados na API <a href="https://pokeapi.co/">PokéAPI</a>, a API pública e oficial do Pokémon! Você pode acessar o site <a href="https://pokedex-react-seven-sage.vercel.app/">clicando aqui</a></li>!
 
   ### Descrição: 
 
-   O site ainda está em alpha, o quê significa que várias funcionalidades ainda serão implentadas! Mas por enquanto o site pega os dados dos pokémon <a href="https://pokeapi.co/">PokéAPI</a> e os renderiza na tela. Cada vez que o usuário clica no "botão de reload" a página adiciona mais 10 pokémon à lista.
+   O site ainda está em alpha, o quê significa que várias funcionalidades ainda serão implementadas! Mas por enquanto, o site pega os dados dos pokémon da <a href="https://pokeapi.co/">PokéAPI</a> e os renderiza na tela. Cada vez que o usuário clica no "botão de reload" a página adiciona mais 10 pokémon à lista.
    <br>
    Além disso eu também coloquei um alternador de temas para as pessoas que, assim como eu, gostam de sites mais escuros :D .
     
    [<img src="src/img/desktop.gif" src="Layout da versão desktop">](https://pokedex-react-seven-sage.vercel.app/)
 
    ###### <span style="position: absolute; bottom: -2px; color: grey;">Visão geral da página</span>
-
-   <br>
 
   ### <li><a href="https://pokedex-react-seven-sage.vercel.app/">Ver site</a></li>
 
@@ -73,7 +69,7 @@
    ```js
    const [pokedex, setPokedex] = useState([])
 ```
-  Eu consegui acabar com várias dúvidas sobre o useState, mas o quê eu mais aprendi foi useEffect
+  Eu consegui acabar com várias dúvidas sobre o useState, mas o quê eu mais aprendi foi useEffect.
 
    ```js
    useEffect(() => {
@@ -87,7 +83,7 @@
   }, [load])
 ```
 
-  O desenvolvimento me fez entender que, antes de entender o useEffect, é preciso entender o ciclo de vidas dos componentes React, como <span style="color: lightblue">ComponentDidMount</span>, <span style="color: lightblue">ComponentDidUpdate</span> e <span style="color: lightblue">ComponentWillUnmount</span>. Foi apenas uando eu entendi que o useEffect serve para "substituir" estas fases do ciclo de vida que eu pude continuar o desenvolvimento.
+  O desenvolvimento me fez entender que, antes de entender o useEffect, é preciso entender o ciclo de vida dos componentes React, como ComponentDidMount,  ComponentDidUpdate e ComponentWillUnmount. Foi apenas quando eu entendi que o useEffect serve para "substituir" estas fases do ciclo de vida que eu pude continuar o desenvolvimento.
 
   ### <strong>Map</strong>
 
@@ -117,7 +113,7 @@
 
 ### <strong>Context API</strong>
 
-Aproveitei a oportunidade para colocar os meus conhecimentos sobre Context API em prática e criar um alternador de temas. Neste caso eu criei um objeto com mais dois objetos dentro, cada um representando um tema, <span style="color: lightblue">Solrock</span> (claro) e <span style="color: lightblue">Lunatone</span> (escuro).
+Aproveitei a oportunidade para colocar os meus conhecimentos sobre Context API em prática e criar um alternador de temas. Neste caso eu criei uma variável com dois objetos dentro, cada um representando um tema, Solrock (claro) e Lunatone (escuro).
 
 ``` js
 export const themes = {
@@ -147,7 +143,7 @@ export const themes = {
     }
 }
 ```
-Para trocar os temas eu criei um componente que retorna um botão com o evento onClick, que ao ser clicado alterna o objeto atribuído ao estado do contexto.
+Para trocar os temas eu criei um componente que retorna um botão com o evento onClick. Quando o botão é clicado, a função alterna o objeto atribuído ao estado do contexto.
 
 ``` js
 export const ThemeSwitcherButton = () => {
@@ -160,7 +156,7 @@ export const ThemeSwitcherButton = () => {
     )
 }
 ```
-Com isso eu também aprendi muito sobre funções de evento no React.
+Com isso eu também acabei aprendendo muito sobre funções de evento no React.
 
 
 ## Como usar
