@@ -7,6 +7,9 @@
         - [Tecnologias utilizadas](#tecnologias-utilizadas)
         - [Alguns métodos utilizados](#alguns-métodos-utilizados)
    - [O quê aprendi](#o-quê-aprendi)
+        - [useState e useEffect](#strongusestate-e-useeffectstrong)
+        - [Map](#strongmapstrong)
+        - [Context API](#strongcontext-apistrong)
    - [Como usar](#como-usar)
    - [Agradecimentos](#agradecimentos)
 
