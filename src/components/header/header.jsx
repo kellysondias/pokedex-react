@@ -9,7 +9,7 @@ export const Header = () => {
 
     return (
         <Heading theme={theme}>
-            <h1>Pokédex</h1>
+            <h1><a href='https://pokedex-react-seven-sage.vercel.app/'>Pokédex</a></h1>
             <ThemeSwitcherButton />
         </Heading>
     )
@@ -22,7 +22,6 @@ const Heading = styled.header`
     align-items: center;
     text-align: center;
     font-family: 'Press Start 2P', monospace;
-    color: ${props => props.theme.headerColor};
     background-color: ${props => props.theme.headerBackground};
     padding-top: 5px;
 
@@ -30,6 +29,10 @@ const Heading = styled.header`
         font-size: 3.5rem;
         font-weight: '400';
         margin-left: 2.4rem;
+    }
+
+    a {
+        color: ${props => props.theme.headerColor};
     }
 
     @media (max-width: 620px) {

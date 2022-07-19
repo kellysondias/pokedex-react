@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider, themes } from './contexts/theme-switcher';
 import { Header } from './components/header/header';
 import { Pokedex } from './components/pokedex/pokedex';
+import { AppRoutes } from './pages/routes';
 
 function App() {
 
@@ -9,8 +10,10 @@ function App() {
     <>
       <ThemeProvider>
         <GlobalStyle />
-        <Header />
-        <Pokedex />
+        <AppRoutes />
+        <h1 style={{fontSize: '50px', margin: '15px'}}>Erro :(</h1>
+        {/* <Header />
+        <Pokedex /> */}
       </ThemeProvider>
     </>
   );

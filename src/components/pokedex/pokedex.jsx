@@ -16,11 +16,13 @@ export const Pokedex = () => {
   async function fetchData() {
     const namesResponse = await getNamePokemon(load)
     const pokeList = namesResponse.map(async name => await getPokemon(name))
-    let allPokelist = await Promise.all(pokeList)
-    setPokedex(allPokelist)
+    let allPokeList = await Promise.all(pokeList)
+    setPokedex(allPokeList)
     }
     fetchData()
   }, [load])
+
+  console.log(pokedex)
 
   return (
     <PokedexSection theme={theme}>
@@ -28,7 +30,7 @@ export const Pokedex = () => {
             {pokedex.map((pokemon, index) => {
                 const typeNames = pokemon.types.map(type => type.type.name)
                 const [firstType, secondType] = typeNames
-                let maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
+                const maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
 
                 return <li key={index}>
                         <PokeCard theme={theme}>
@@ -37,9 +39,10 @@ export const Pokedex = () => {
                                 <span>{pokemon.name}</span>
                                 {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
                             </PokeId>
-                            <PokeTypes>
-                                <span>{firstType}</span>
-                                {secondType && <span>{secondType}</span>}
+                            <PokeTypes theme={theme}>
+                                {pokemon.types.map((type, index) => {
+                                    return <span key={index}>{type.type.name}</span>
+                                } )}
                             </PokeTypes>
                         </PokeCard>
                     </li>
@@ -75,6 +78,7 @@ const PokeCard = styled.div`
     border: 0.5rem solid ${props => props.theme.border};
     padding: 2rem;
     max-width: 255px;
+    cursor: pointer;
     
     div {
         display: flex;
@@ -105,6 +109,11 @@ const PokeId = styled.div`
 const PokeTypes = styled.div`
     margin-top: 0.5rem;
     justify-content: space-evenly;
+    color: ${props => props.theme.color};
+    
+    span {
+        font-size: 2rem;
+    }
 `
 
 const LoadingButton = styled.button `
