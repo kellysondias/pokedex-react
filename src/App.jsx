@@ -11,7 +11,7 @@ function App() {
       <ThemeProvider>
         <GlobalStyle />
         <AppRoutes />
-        <h1 style={{fontSize: '50px', margin: '15px'}}>Erro :(</h1>
+        <h1>Erro :(</h1>
         {/* <Header />
         <Pokedex /> */}
       </ThemeProvider>
