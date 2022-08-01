@@ -9,8 +9,8 @@ export const PokemonDetails = () => {
 
     return (
         <>
-            <h1>XACARAKLABINS</h1>
-            <Link to="/">Voltar para Gibilbo</Link>
+            <h1>Rota</h1>
+            <Link to="/">Voltar para a página inicial</Link>
         </>
     )
 }

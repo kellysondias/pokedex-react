@@ -4,6 +4,7 @@ import { ThemeContext } from '../../contexts/theme-switcher';
 import pokeball from '../../img/pokeball.png'
 import openedPokeball from '../../img/opened-pokeball.png'
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
 
 export const Pokedex = () => {
 
@@ -26,6 +27,7 @@ export const Pokedex = () => {
 
   return (
     <PokedexSection theme={theme}>
+        <Link to="/xubilebers"><h1>Ir para a rota</h1></Link>
         <PokedexResults>
             {pokedex.map((pokemon, index) => {
                 const typeNames = pokemon.types.map(type => type.type.name)
