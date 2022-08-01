@@ -27,7 +27,10 @@ export const Pokedex = () => {
 
   return (
     <PokedexSection theme={theme}>
-        <Link to="/xubilebers"><h1>Ir para a rota</h1></Link>
+        <Link style={{
+            margin: "0 auto",
+            fontSize: "1.3rem"
+            }} to="/xubilebers"><h1>Ir para a rota</h1></Link>
         <PokedexResults>
             {pokedex.map((pokemon, index) => {
                 const typeNames = pokemon.types.map(type => type.type.name)
