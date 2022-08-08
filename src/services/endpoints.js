@@ -6,6 +6,11 @@ export async function getPokemon(name) {
     return await response.json()
 }
 
+export async function getPokemonId(id) {
+    const response = await fetch(`${baseUrl}/${id}`)
+    return await response.json()
+}
+
 export async function getNamePokemon(pokemonLoad) {
     const response = await fetch(`${baseUrl}?limit=${pokemonLoad}&offset=${offSetValue}`)
     const json = await response.json()

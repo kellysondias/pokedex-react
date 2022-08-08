@@ -9,7 +9,7 @@ export const AppRoutes = () => {
                 <Header />
                 <Routes>
                     <Route exact path="/" element={<Homepage />}/>
-                    <Route exact path="/xubilebers" element={<Pokemon />}/>
+                    <Route exact path="/post/:id" element={<Pokemon />}/>
                 </Routes>
             </BrowserRouter>
 )

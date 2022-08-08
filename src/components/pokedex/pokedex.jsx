@@ -23,33 +23,31 @@ export const Pokedex = () => {
     fetchData()
   }, [load])
 
-  console.log(pokedex)
-
   return (
     <PokedexSection theme={theme}>
         <Link style={{
             margin: "0 auto",
             fontSize: "1.3rem"
-            }} to="/xubilebers"><h1>Ir para a rota</h1></Link>
+            }} to= {`/post/:id`} ><h1>Ir para a rota</h1></Link>
         <PokedexResults>
             {pokedex.map((pokemon, index) => {
-                const typeNames = pokemon.types.map(type => type.type.name)
-                const [firstType, secondType] = typeNames
                 const maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
 
                 return <li key={index}>
-                        <PokeCard theme={theme}>
-                            <PokeId>
-                                <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
-                                <span>{pokemon.name}</span>
-                                {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
-                            </PokeId>
-                            <PokeTypes theme={theme}>
-                                {pokemon.types.map((type, index) => {
-                                    return <span key={index}>{type.type.name}</span>
-                                } )}
-                            </PokeTypes>
-                        </PokeCard>
+                        <Link to= {`/post/:${pokemon.id}`}>
+                            <PokeCard theme={theme}>
+                                <PokeId>
+                                    <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
+                                    <span>{pokemon.name}</span>
+                                    {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
+                                </PokeId>
+                                <PokeTypes theme={theme}>
+                                    {pokemon.types.map((type, index) => {
+                                        return <span key={index}>{type.type.name}</span>
+                                    } )}
+                                </PokeTypes>
+                            </PokeCard>
+                        </Link>
                     </li>
             })}
         </PokedexResults>
