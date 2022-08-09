@@ -25,16 +25,12 @@ export const Pokedex = () => {
 
   return (
     <PokedexSection theme={theme}>
-        <Link style={{
-            margin: "0 auto",
-            fontSize: "1.3rem"
-            }} to= {`/post/:id`} ><h1>Ir para a rota</h1></Link>
         <PokedexResults>
             {pokedex.map((pokemon, index) => {
                 const maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
 
                 return <li key={index}>
-                        <Link to= {`/post/:${pokemon.id}`}>
+                        <Link to= {`/pokemon/${pokemon.id}`}>
                             <PokeCard theme={theme}>
                                 <PokeId>
                                     <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />
