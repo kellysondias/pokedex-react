@@ -1,15 +1,9 @@
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon'
 const offSetValue = 0
 
-export async function getPokemon(name) {
-    const url = await fetch(`${baseUrl}/${name}`)
+export async function getPokemon(name, id) {
+    const url = await fetch(`${baseUrl}/${name || id}`)
     return await url.json()
-}
-
-export async function getPokemonId(id) {
-    const url = await fetch(`${baseUrl}/${id}`)
-    const json = await url.json()
-    return await json
 }
 
 export async function getNamePokemon(pokemonLoad) {

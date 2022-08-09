@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { getPokemonId } from '../../services/endpoints'
+import { getPokemon } from '../../services/endpoints'
 
 export const PokemonDetails = () => {
     const [pokemon, setPokemon] = useState({})
@@ -10,7 +10,7 @@ export const PokemonDetails = () => {
    
     useEffect(() => {  
         async function fetchData() {
-            const pokemonResponse = await getPokemonId(id)
+            const pokemonResponse = await getPokemon(id)
             console.log("POKEMONRESPONSE", pokemonResponse.id)
             setPokemon(pokemonResponse)
         }
