@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useContext } from 'react'
 import { ThemeContext } from '../../contexts/theme-switcher'
 import { ThemeSwitcherButton } from '../theme-switcher-button/theme-switcher-button'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
 
@@ -9,7 +10,7 @@ export const Header = () => {
 
     return (
         <Heading theme={theme}>
-            <h1><a href='https://pokedex-react-seven-sage.vercel.app/'>Pokédex</a></h1>
+            <h1><Link to="/">Pokédex</Link></h1>
             <ThemeSwitcherButton />
         </Heading>
     )

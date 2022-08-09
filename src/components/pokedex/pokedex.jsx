@@ -30,7 +30,7 @@ export const Pokedex = () => {
                 const maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
 
                 return <li key={index}>
-                        <Link to= {`/pokemon/${pokemon.id}`}>
+                        <Link to={`/pokemon/${pokemon.id}`}>
                             <PokeCard theme={theme}>
                                 <PokeId>
                                     <img src={pokemon.sprites.front_default} alt={`${pokemon.name}'s appearance`} />

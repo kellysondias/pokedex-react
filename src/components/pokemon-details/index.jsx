@@ -34,6 +34,8 @@ export const PokemonDetails = () => {
                 <h1 style={{fontSize: "4rem"}}>Rota</h1>
                 <Link to="/"><p style={{marginTop: "5px"}}>Voltar para a página inicial</p></Link>
             </div>
+
+            {/* <p>{pokemon.name}</p> */}
         </>
     )
 }
