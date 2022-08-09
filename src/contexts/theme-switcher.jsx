@@ -13,7 +13,8 @@ export const themes = {
         color: '#f4f4f3',
         headerBackground: '#9e2a28',
         headerColor: '#f4f4f3',
-        image: lunatoneSprite
+        image: lunatoneSprite,
+        pokedexCard: '#d43339'
     },
     lunatone: {
         alt: "Switch to 'light mode'",
@@ -25,7 +26,8 @@ export const themes = {
         color: '#e2e2e2',
         headerBackground: '#010a2e',
         headerColor: '#e2e2e2',
-        image: solrockSprite
+        image: solrockSprite,
+        pokedexCard: '#000'
     }
 }
 

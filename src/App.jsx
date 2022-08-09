@@ -1,9 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider, themes } from './contexts/theme-switcher';
-import { Header } from './components/header/header';
-import { Pokedex } from './components/pokedex/pokedex';
 import { AppRoutes } from './pages/routes';
-import { Link } from 'react-router-dom';
 
 function App() {
 

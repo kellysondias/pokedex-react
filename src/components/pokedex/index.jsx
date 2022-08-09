@@ -58,7 +58,7 @@ const PokedexSection = styled.section`
     flex-flow: column nowrap;
     min-height: 100vh;
     padding-top: 12px;
-    background-color: ${props => props.theme.background}
+    background-color: ${props => props.theme.background};
 `
 
 const PokedexResults = styled.ul`
