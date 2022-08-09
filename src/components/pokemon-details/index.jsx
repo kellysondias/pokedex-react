@@ -11,31 +11,23 @@ export const PokemonDetails = () => {
     useEffect(() => {  
         async function fetchData() {
             const pokemonResponse = await getPokemonId(id)
-            console.log("POKEMONRESPONSE DATA",pokemonResponse.data)
-            /* const resolvePokeData = await Promise.any(pokemonResponse) */
-            /* setPokemon(pokemonResponse.data) */
+            console.log("POKEMONRESPONSE", pokemonResponse.id)
+            setPokemon(pokemonResponse)
         }
         
         fetchData()
     }, [])
+
+    console.log("POKEMENES",pokemon)
     
-    console.log("id do useParams:", id)
-    /* console.log("POKEMENES", pokemon)
+    /* console.log("id do useParams:", id)
+    console.log("POKEMENES", pokemon)
     console.log("Mensagem da função getPokemonId:",getPokemonId(id)) */
 
 
     return (
         <>
-            <div style={{
-                textAlign: "center", 
-                marginTop: "10px", 
-                fontSize: "2rem"
-                }}>
-                <h1 style={{fontSize: "4rem"}}>Rota</h1>
-                <Link to="/"><p style={{marginTop: "5px"}}>Voltar para a página inicial</p></Link>
-            </div>
-
-            {/* <p>{pokemon.name}</p> */}
+            <p style={{textAlign: "center", fontSize: "30px"}}>{pokemon.name}</p>
         </>
     )
 }
