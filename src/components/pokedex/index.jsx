@@ -66,6 +66,8 @@ const PokedexResults = styled.ul`
     justify-content: center;
     align-items: center;
     flex-flow: row wrap;
+    width: 83%;
+    margin: 0 auto;
 `
 
 const PokeCard = styled.div`

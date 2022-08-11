@@ -1,5 +1,5 @@
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon'
-const offSetValue = 0
+const offSetValue = 257
 
 export async function getPokemon(name, id) {
     const url = await fetch(`${baseUrl}/${name || id}`)
@@ -11,4 +11,14 @@ export async function getNamePokemon(pokemonLoad) {
     const json = await url.json()
     const pokemonNameList = json.results.map(pokemon => pokemon.name)
     return pokemonNameList
+}
+
+export async function getAbilities(abilities) {
+    const abilitiesResponse = abilities.map(async ability => {
+        const url = await fetch(ability.ability.url)
+        const json = await url.json()
+        return json
+    })
+    const allAbilitiesResponse = await Promise.all(abilitiesResponse)
+    return allAbilitiesResponse
 }

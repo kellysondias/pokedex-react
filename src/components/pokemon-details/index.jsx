@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getPokemon } from '../../services/endpoints'
+import { getAbilities, getPokemon } from '../../services/endpoints'
 import { ThemeContext } from '../../contexts/theme-switcher';
 import styled from 'styled-components';
 import { useContext } from 'react';
@@ -14,6 +14,8 @@ export const PokemonDetails = () => {
         types: []
     })
 
+    const [abilities, setAbilities] = useState([])
+
     const { id } = useParams()
 
     const {theme} = useContext(ThemeContext)
@@ -23,30 +25,74 @@ export const PokemonDetails = () => {
     useEffect(() => {  
         async function fetchData() {
             const pokeData = await getPokemon(id)
+            fetchAbilities(pokeData)
             setPokemon({
                 name: pokeData.name,
                 id: pokeData.id,
                 image: pokeData.sprites.front_default,
-                moves: pokeData.moves,
-                types: pokeData.types
+                moves: pokeData.moves.slice(0,5),
+                types: pokeData.types,
             })
         }
         
         fetchData()
+
+        async function fetchAbilities (pokeData) {
+            const abilitiesData = await getAbilities(pokeData.abilities)
+            setAbilities(abilitiesData)
+        }
     }, [])
 
     console.log("POKÉMON DATA:",pokemon)
 
+    console.log("ABILITIES:", abilities)
+
     return (
         <PokemonSection theme={theme}>
             <PokedexCard theme={theme}>
-                <PokeId>
-                    <div>
+                <PokeId theme={theme}>
+                    <div className='name-id'>
                         <span className="name">{pokemon.name.toUpperCase()}</span>
                         {pokemon.id < 100 ? <span>{maxDecPokemonNumber}</span> : <span>{`#${pokemon.id}`}</span>}
                     </div>
-                    <div></div>
+                    <div className="image">
+                        <img src={pokemon.image} alt={`${pokemon.name}'s appearance`}></img>
+                    </div>
                 </PokeId>
+
+                <PokeInfo theme={theme} style={{backgroundColor: 'purple'}}>
+                    <h2>Info</h2>
+
+                    <div className='type' theme={theme}>
+                        <h3>Type</h3>
+                        <ul>
+                            {pokemon.types.map( type => {
+                                return <li>{type.type.name}</li>
+                            })}
+                        </ul>
+                    </div>
+
+                    <div className='moves'>
+                        <h2>Moves</h2>
+                        <ul>
+                            {pokemon.moves.map( move => {
+                                return <li>{move.move.name}</li>
+                            })}
+                        </ul>
+                    </div>
+
+                    <div className='abilities'>
+                        <h2>Abilities</h2>
+                        {abilities.map( ability => {
+                                return (
+                                    <div className='ability'>
+                                        <h3>{ability.name}</h3>
+                                        {ability.effect_entries.slice(1).map(description => <p>{description.effect}</p>)}
+                                    </div>
+                                )
+                            })}
+                    </div>
+                </PokeInfo>
             </PokedexCard>
         </PokemonSection>
     )
@@ -55,30 +101,63 @@ export const PokemonDetails = () => {
 const PokemonSection = styled.section`
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    padding-top: 12px;
     background-color: ${props => props.theme.background};
 `
 
 const PokedexCard = styled.div`
-    background-color: ${props => props.theme.pokedexCard};
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 3.3rem 0;
+    align-items: center;
     width: 80%;
-    margin: 0 auto;
+    border-radius: 1.5rem;
+    background-color: ${props => props.theme.pokedexCard};
 `
 
 const PokeId = styled.div`
-    div:first-child {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    .name-id {
         display: flex;
         justify-content: center;
+        margin-bottom: 0.5rem;
+        padding: 0.2rem 3rem;
     }
 
-    div:first-child span {
+    .name-id span {
         text-align: center;
         font-size: 23px;
-        margin-top: 10px;
     }
 
     .name {
-        margin-right: 10px;
+        margin-right: 1rem;
+        color: ${props => props.theme.pokemonIdcolor};
     }
+
+    .image {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .name-id, .image {
+        background-color: ${props => props.theme.pokemonProfileBg};
+        border: 0.2rem solid #000;
+        border-radius: 10px;
+        width: 100%;
+    }
+
+    .image img {
+        width: 300px;
+    }
+`
+
+const PokeInfo = styled.section`
+    width: 50%;
 `
