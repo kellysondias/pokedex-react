@@ -1,5 +1,5 @@
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon'
-const offSetValue = 257
+const offSetValue = 0
 
 export async function getPokemon(name, id) {
     const url = await fetch(`${baseUrl}/${name || id}`)
