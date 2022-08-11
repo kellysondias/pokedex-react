@@ -18,8 +18,10 @@ export const themes = {
         pokemonBorder: '#000',
         pokemonColor: '#272626',
         pokemonInfoBg: '#89e5f1',
-        pokemonInfoHeaderBorderColor: '#fff',
-        pokemonProfileBg: '#bee9f3'
+        pokemonInfoHeaderBorderColor: '#f4f4f3',
+        pokemonProfileBg: '#bee9f3',
+        pokemonTypeBg: '#9e2a28',
+        pokemonTypeColor: '#f4f4f3'
     },
     lunatone: {
         alt: "Switch to 'light mode'",
@@ -36,8 +38,10 @@ export const themes = {
         pokemonBorder: '#0e0c0c',
         pokemonColor: '#e2e2e2',
         pokemonInfoBg: '#0e535c',
-        pokemonInfoHeaderBorderColor: '#000',
-        pokemonProfileBg: '#2a7585'
+        pokemonInfoHeaderBorderColor: '#0e0c0c',
+        pokemonProfileBg: '#2a7585',
+        pokemonTypeBg: '#010a2e',
+        pokemonTypeColor: '#e2e2e2'
     }
 }
 

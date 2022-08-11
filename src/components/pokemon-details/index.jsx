@@ -67,7 +67,7 @@ export const PokemonDetails = () => {
                         <h3>Type</h3>
                         <ul>
                             {pokemon.types.map( type => {
-                                return <li>{type.type.name}</li>
+                                return <li className='type-name'>{type.type.name}</li>
                             })}
                         </ul>
                     </div>
@@ -76,7 +76,7 @@ export const PokemonDetails = () => {
                         <h3>Moves</h3>
                         <ul>
                             {pokemon.moves.map( move => {
-                                return <li>{move.move.name}</li>
+                                return <li className='move'>{move.move.name}</li>
                             })}
                         </ul>
                     </div>
@@ -111,8 +111,9 @@ const PokedexCard = styled.div`
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    padding: 3.3rem 0;
     align-items: center;
+    padding: 3.3rem 0;
+    margin: 50px 0;
     width: 80%;
     border-radius: 1.5rem;
     background-color: ${props => props.theme.pokedexCard};
@@ -128,7 +129,7 @@ const PokeId = styled.div`
     .name-id {
         display: flex;
         justify-content: center;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
         padding: 0.2rem 3rem;
     }
 
@@ -155,7 +156,7 @@ const PokeId = styled.div`
     }
 
     .image img {
-        width: 300px;
+        width: 350px;
     }
 `
 
@@ -171,12 +172,46 @@ const PokeInfo = styled.section`
     background-color: ${props => props.theme.pokemonInfoBg};
 
     h2 {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
         border-bottom: 2px solid ${props => props.theme.pokemonInfoHeaderBorderColor};
         width: 100%;
     }
 
     h3 {
-        font=size: 2.5rem;
+        font-size: 2.7rem;
+    }
+
+    li {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+    }
+
+    .type ul {
+        display: flex;
+    }
+
+    .type-name {
+        font-size: 2.3rem;
+        margin: 0.5rem auto;
+        padding: 0.4rem;
+        border-radius: 0.5rem;
+        color: ${props => props.theme.pokemonTypeColor};
+        background-color: ${props => props.theme.pokemonTypeBg};
+    }
+
+    .type-name:first-child {
+        margin-right: 0.5rem;
+    }
+
+    .abilities h3 {
+        margin-bottom: 5px;
+    }
+
+    .moves .move,
+    .abilities .ability {
+        margin: 0.7rem auto;
     }
 `
