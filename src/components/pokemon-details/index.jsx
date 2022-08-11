@@ -124,7 +124,7 @@ const PokeId = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     margin-right: 4.5rem;
-    color: ${props => props.theme.pokemoncolor};
+    color: ${props => props.theme.pokemonColor};
 
     .name-id {
         display: flex;
@@ -166,7 +166,7 @@ const PokeInfo = styled.section`
     align-items: center;
     width: 50%;
     text-align: center;
-    color: ${props => props.theme.pokemoncolor};
+    color: ${props => props.theme.pokemonColor};
     border: 0.2rem solid ${props => props.theme.pokemonBorder};
     border-radius: 1rem;
     background-color: ${props => props.theme.pokemonInfoBg};
