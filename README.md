@@ -23,7 +23,7 @@
 
 ## Sobre
   
-  O site neste portfólio é uma pokédex contendo todos os pokémon registrados na API <a href="https://pokeapi.co/">PokéAPI</a>, a API pública e oficial do Pokémon! Você pode acessar o site <a href="https://pokedex-react-seven-sage.vercel.app/">clicando aqui</a></li>!
+  O site neste repositório é uma pokédex contendo todos os pokémon registrados na API <a href="https://pokeapi.co/">PokéAPI</a>, a API pública e oficial do Pokémon! Você pode acessar o site <a href="https://pokedex-react-seven-sage.vercel.app/">clicando aqui</a></li>!
 
   ### Descrição: 
 
