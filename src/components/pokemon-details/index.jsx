@@ -23,7 +23,7 @@ export const PokemonDetails = () => {
     const maxDecPokemonNumber = pokemon.id < 10 ? <span>{`#00${pokemon.id}`}</span> : <span>{`#0${pokemon.id}`}</span>
    
     useEffect(() => {  
-        async function fetchData() {
+        async function fetchPokemon() {
             const pokeData = await getPokemon(id)
             fetchAbilities(pokeData)
             setPokemon({
@@ -35,7 +35,7 @@ export const PokemonDetails = () => {
             })
         }
         
-        fetchData()
+        fetchPokemon()
 
         async function fetchAbilities (pokeData) {
             const abilitiesData = await getAbilities(pokeData.abilities)
@@ -60,7 +60,7 @@ export const PokemonDetails = () => {
                     </div>
                 </PokeId>
 
-                <PokeInfo theme={theme} style={{backgroundColor: 'purple'}}>
+                <PokeInfo theme={theme}>
                     <h2>Info</h2>
 
                     <div className='type' theme={theme}>
@@ -73,7 +73,7 @@ export const PokemonDetails = () => {
                     </div>
 
                     <div className='moves'>
-                        <h2>Moves</h2>
+                        <h3>Moves</h3>
                         <ul>
                             {pokemon.moves.map( move => {
                                 return <li>{move.move.name}</li>
@@ -82,7 +82,7 @@ export const PokemonDetails = () => {
                     </div>
 
                     <div className='abilities'>
-                        <h2>Abilities</h2>
+                        <h3>Abilities</h3>
                         {abilities.map( ability => {
                                 return (
                                     <div className='ability'>
@@ -122,6 +122,8 @@ const PokeId = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    margin-right: 4.5rem;
+    color: ${props => props.theme.pokemoncolor};
 
     .name-id {
         display: flex;
@@ -137,7 +139,6 @@ const PokeId = styled.div`
 
     .name {
         margin-right: 1rem;
-        color: ${props => props.theme.pokemonIdcolor};
     }
 
     .image {
@@ -148,8 +149,8 @@ const PokeId = styled.div`
 
     .name-id, .image {
         background-color: ${props => props.theme.pokemonProfileBg};
-        border: 0.2rem solid #000;
-        border-radius: 10px;
+        border: 0.2rem solid ${props => props.theme.pokemonBorder};
+        border-radius: 1rem;
         width: 100%;
     }
 
@@ -159,5 +160,23 @@ const PokeId = styled.div`
 `
 
 const PokeInfo = styled.section`
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
     width: 50%;
+    text-align: center;
+    color: ${props => props.theme.pokemoncolor};
+    border: 0.2rem solid ${props => props.theme.pokemonBorder};
+    border-radius: 1rem;
+    background-color: ${props => props.theme.pokemonInfoBg};
+
+    h2 {
+        font-size: 3.5rem;
+        border-bottom: 2px solid ${props => props.theme.pokemonInfoHeaderBorderColor};
+        width: 100%;
+    }
+
+    h3 {
+        font=size: 2.5rem;
+    }
 `

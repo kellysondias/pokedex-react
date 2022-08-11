@@ -15,7 +15,10 @@ export const themes = {
         headerColor: '#f4f4f3',
         image: lunatoneSprite,
         pokedexCard: '#d43339',
-        pokemonIdColor: '#272626',
+        pokemonBorder: '#000',
+        pokemonColor: '#272626',
+        pokemonInfoBg: '#89e5f1',
+        pokemonInfoHeaderBorderColor: '#fff',
         pokemonProfileBg: '#bee9f3'
     },
     lunatone: {
@@ -30,7 +33,10 @@ export const themes = {
         headerColor: '#e2e2e2',
         image: solrockSprite,
         pokedexCard: '#1a0044',
-        pokemonIdColor: '#e2e2e2',
+        pokemonBorder: '#0e0c0c',
+        pokemonColor: '#e2e2e2',
+        pokemonInfoBg: '#0e535c',
+        pokemonInfoHeaderBorderColor: '#000',
         pokemonProfileBg: '#2a7585'
     }
 }
