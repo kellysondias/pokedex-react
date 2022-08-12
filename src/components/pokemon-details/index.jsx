@@ -160,6 +160,19 @@ const PokeId = styled.div`
     .image img {
         width: 350px;
     }
+
+    @media (max-width: 1006px) {
+        margin-right: 0.4rem;
+        margin-bottom: 1rem;
+    } 
+
+    @media (max-width: 450px) {
+        width: 60%;
+        
+        .name-id span {
+            font-size: 1.5rem;
+        }
+    }
 `
 
 const PokeInfo = styled.section`
@@ -167,7 +180,7 @@ const PokeInfo = styled.section`
     flex-flow: column nowrap;
     align-items: center;
     max-width: 400px;
-    width: 50%;
+    width: 100%;
     text-align: center;
     color: ${props => props.theme.pokemonColor};
     border: 0.2rem solid ${props => props.theme.pokemonBorder};
@@ -216,5 +229,27 @@ const PokeInfo = styled.section`
     .moves .move,
     .abilities .ability {
         margin: 0.7rem auto;
+    }
+
+    @media (max-width: 450px) {
+        h2 {
+            font-size: 3.5rem;
+        }
+    
+        h3 {
+            font-size: 2rem;
+        }
+    
+        li {
+            font-size: 1.5rem;
+        }
+    
+        p {
+            font-size: 1.5rem;
+        }
+
+        .type-name {
+            font-size: 1.5rem;
+        }
     }
 `
