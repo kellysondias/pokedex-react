@@ -43,10 +43,6 @@ export const PokemonDetails = () => {
         }
     }, [])
 
-    console.log("POKÉMON DATA:",pokemon)
-
-    console.log("ABILITIES:", abilities)
-
     return (
         <PokemonSection theme={theme}>
             <PokedexCard theme={theme}>

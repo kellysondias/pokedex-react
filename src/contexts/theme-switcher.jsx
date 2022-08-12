@@ -21,7 +21,7 @@ export const themes = {
         pokemonInfoHeaderBorderColor: '#f4f4f3',
         pokemonProfileBg: '#bee9f3',
         pokemonTypeBg: '#9e2a28',
-        pokemonTypeColor: '#f4f4f3'
+        pokemonTypeColor: '#f4f4f3',
     },
     lunatone: {
         alt: "Switch to 'light mode'",

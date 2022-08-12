@@ -6,13 +6,13 @@ export const ThemeSwitcherButton = () => {
     const {theme, setTheme} = useContext(ThemeContext)
 
     return (
-        <Switcher>
+        <SwitcherButton>
             <img src={theme.image} alt={theme.alt} onClick={() => setTheme(theme === themes.solrock ? themes.lunatone : themes.solrock)}/>
-        </Switcher>
+        </SwitcherButton>
     )
 }
 
-const Switcher = styled.div`
+const SwitcherButton = styled.div`
     
     display: flex;
 
