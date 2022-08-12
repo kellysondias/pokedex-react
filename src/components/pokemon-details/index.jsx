@@ -112,8 +112,8 @@ const PokedexCard = styled.div`
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    padding: 3.3rem 0;
-    margin: 50px 0;
+    padding: 30px;
+    margin: 50px auto;
     width: 80%;
     border-radius: 1.5rem;
     background-color: ${props => props.theme.pokedexCard};
@@ -123,6 +123,8 @@ const PokeId = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    max-width: 300px;
+    width: 100%;
     margin-right: 4.5rem;
     color: ${props => props.theme.pokemonColor};
 
@@ -164,6 +166,7 @@ const PokeInfo = styled.section`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    max-width: 400px;
     width: 50%;
     text-align: center;
     color: ${props => props.theme.pokemonColor};
