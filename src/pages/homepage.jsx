@@ -1,3 +1,3 @@
 import { Pokedex } from "../components/pokedex";
 
-export const Homepage = () => <Pokedex />
+export const Homepage = () => <Pokedex />;

@@ -1,9 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
-import { ThemeProvider, themes } from './contexts/theme-switcher';
-import { AppRoutes } from './pages/routes';
+import { createGlobalStyle } from "styled-components";
+import { ThemeProvider, themes } from "./contexts/theme-switcher";
+import { AppRoutes } from "./pages/routes";
 
 function App() {
-
   return (
     <>
       <ThemeProvider>
@@ -41,6 +40,6 @@ const GlobalStyle = createGlobalStyle`
   ol, ul {
     list-style: none;
   }
-`
+`;
 
 export default App;

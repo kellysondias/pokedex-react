@@ -1,3 +1,3 @@
-import { PokemonDetails } from '../components/pokemon-details/index'
+import { PokemonDetails } from "../components/pokemon-details/index";
 
-export const Pokemon = () => <PokemonDetails />
+export const Pokemon = () => <PokemonDetails />;
