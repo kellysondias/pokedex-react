@@ -28,9 +28,6 @@ export const Pokedex = () => {
     fetchData();
   }, [load]);
 
-  console.log(pokedex);
-  console.log(search);
-
   const lowerSearch = search.toLowerCase();
   const pokedexSearch = pokedex.filter((pokemon) =>
     pokemon.name.includes(lowerSearch)
