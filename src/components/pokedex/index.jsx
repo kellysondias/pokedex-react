@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { getNamePokemon, getPokemon } from "../../services/endpoints";
 import { ThemeContext } from "../../contexts/theme-switcher";
 import pokeball from "../../img/pokeball.png";
+import loadingIcon from "../../img/loading.gif";
 import openedPokeball from "../../img/opened-pokeball.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -28,6 +29,7 @@ export const Pokedex = () => {
   }, [load]);
 
   console.log(pokedex);
+  console.log(search);
 
   const lowerSearch = search.toLowerCase();
   const pokedexSearch = pokedex.filter((pokemon) =>
@@ -37,7 +39,10 @@ export const Pokedex = () => {
   return (
     <PokedexSection theme={theme}>
       {loading ? (
-        <span className="loading-message">Loading...</span>
+        <div className="loading-screen">
+          <img src={loadingIcon} className="loading-icon" alt="Loading Icon" />
+          <span className="loading-message">Loading...</span>
+        </div>
       ) : (
         <>
           <input
@@ -104,9 +109,22 @@ const PokedexSection = styled.section`
   padding-top: 12px;
   background-color: ${(props) => props.theme.background};
 
+  .loading-screen {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
+
+  .loading-icon {
+    max-width: 150px;
+  }
+
   .loading-message {
     margin-top: 1rem;
     font-size: 2.3rem;
+    text-align: center;
+    margin-top: 1rem;
   }
 
   input {
