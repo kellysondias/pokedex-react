@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { getNamePokemon, getPokemon } from "../../services/endpoints";
+import { getNamePokemon, getPokemon, getSearch } from "../../services/endpoints";
 import { ThemeContext } from "../../contexts/theme-switcher";
 import pokeball from "../../img/pokeball.png";
 import loadingIcon from "../../img/loading.gif";
@@ -25,13 +25,22 @@ export const Pokedex = () => {
       setPokedex(allPokeList);
       setLoading(false);
     }
-    fetchData();
-  }, [load]);
 
-  const lowerSearch = search.toLowerCase();
-  const pokedexSearch = pokedex.filter((pokemon) =>
-    pokemon.name.includes(lowerSearch)
-  );
+    async function fetchSearch() {
+      const searchResponse = await getSearch(search);
+      /* const pokeList = searchResponse.map(
+        async (name) => await getSearch(name)
+      ); */
+      /* let allSearch = await Promise.all(searchResponse); */
+      setPokedex(searchResponse);
+    }
+
+    fetchData();
+    if (search !== '') fetchSearch()
+  }, [load, search]);
+
+  console.log(search)
+  console.log(pokedex)
 
   return (
     <PokedexSection theme={theme}>
@@ -50,7 +59,7 @@ export const Pokedex = () => {
           />
 
           <PokedexResults>
-            {pokedexSearch.map((pokemon, index) => {
+            {pokedex.map((pokemon, index) => {
               const maxDecPokemonNumber =
                 pokemon.id < 10 ? (
                   <span>{`#00${pokemon.id}`}</span>
