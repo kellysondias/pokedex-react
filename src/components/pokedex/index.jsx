@@ -10,7 +10,7 @@ import { SearchBar } from "../search-bar/search-bar";
 
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState([]);
-  const [load, setLoad] = useState(10);
+  const [load, setLoad] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showMore, setShowMore] = useState(true);
   const [search, setSearch] = useState("");
@@ -19,7 +19,7 @@ export const Pokedex = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const namesResponse = await getNamePokemon(load);
+      const namesResponse = await getNamePokemon(pagination, load);
       const pokeList = namesResponse.map(
         async (name) => await getPokemon(name)
       );
@@ -42,13 +42,14 @@ export const Pokedex = () => {
     setShowMore(false);
 
     if (search !== "") {
-      pagination = 800;
+      pagination = 923;
     } else {
       setShowMore(true);
+      setLoad(0)
       pagination = 10;
     }
 
-    const namesResponse = await getNamePokemon(load);
+    const namesResponse = await getNamePokemon(pagination, load);
     const pokeList = namesResponse.map(async (name) => await getPokemon(name));
     const allPokeList = await Promise.all(pokeList);
 
@@ -58,6 +59,9 @@ export const Pokedex = () => {
 
     setPokedex(pokeSearch);
   }
+
+  console.log("PAGINATION:", pagination)
+  console.log("LOAD:", load)
 
   return (
     <PokedexSection theme={theme}>
