@@ -1,19 +1,21 @@
 import { useEffect, useState, useContext } from "react";
-import { getNamePokemon, getPokemon, getSearch } from "../../services/endpoints";
+import { getNamePokemon, getPokemon } from "../../services/endpoints";
 import { ThemeContext } from "../../contexts/theme-switcher";
 import pokeball from "../../img/pokeball.png";
 import loadingIcon from "../../img/loading.gif";
 import openedPokeball from "../../img/opened-pokeball.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { SearchBar } from "../search-bar/search-bar";
 
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState([]);
   const [load, setLoad] = useState(10);
   const [loading, setLoading] = useState(true);
+  const [showMore, setShowMore] = useState(true);
   const [search, setSearch] = useState("");
   const { theme } = useContext(ThemeContext);
-  const pagination = 10;
+  let pagination = 10;
 
   useEffect(() => {
     async function fetchData() {
@@ -21,86 +23,107 @@ export const Pokedex = () => {
       const pokeList = namesResponse.map(
         async (name) => await getPokemon(name)
       );
-      let allPokeList = await Promise.all(pokeList);
+      const allPokeList = await Promise.all(pokeList);
       setPokedex(allPokeList);
       setLoading(false);
     }
 
-    async function fetchSearch() {
-      const searchResponse = await getSearch(search);
-      /* const pokeList = searchResponse.map(
-        async (name) => await getSearch(name)
-      ); */
-      /* let allSearch = await Promise.all(searchResponse); */
-      setPokedex(searchResponse);
+    fetchData();
+  }, [load]);
+
+  console.log("SEARCH:", search);
+  console.log("POKEDEX:", pokedex);
+
+  function handleChange(e) {
+    setSearch(e.target.value);
+  }
+
+  async function filterPokemon() {
+    setShowMore(false);
+
+    if (search !== "") {
+      pagination = 800;
+    } else {
+      setShowMore(true);
+      pagination = 10;
     }
 
-    fetchData();
-    if (search !== '') fetchSearch()
-  }, [load, search]);
+    const namesResponse = await getNamePokemon(load);
+    const pokeList = namesResponse.map(async (name) => await getPokemon(name));
+    const allPokeList = await Promise.all(pokeList);
 
-  console.log(search)
-  console.log(pokedex)
+    const pokeSearch = allPokeList.filter((pokemon) =>
+      pokemon.name.includes(search.toLowerCase())
+    );
+
+    setPokedex(pokeSearch);
+  }
 
   return (
     <PokedexSection theme={theme}>
       {loading ? (
         <div className="loading-screen">
-          <img src={loadingIcon} className="loading-icon" alt="Loading Icon" />
+          <img src={loadingIcon} className="loading-icon" alt="Loading..." />
           <span className="loading-message">Loading...</span>
         </div>
       ) : (
         <>
-          <input
-            type="text"
-            value={search}
+          <SearchBar
             placeholder="Search a Pokémon..."
-            onChange={(e) => setSearch(e.target.value)}
+            search={search}
+            change={handleChange}
+            filter={filterPokemon}
           />
 
-          <PokedexResults>
-            {pokedex.map((pokemon, index) => {
-              const maxDecPokemonNumber =
-                pokemon.id < 10 ? (
-                  <span>{`#00${pokemon.id}`}</span>
-                ) : (
-                  <span>{`#0${pokemon.id}`}</span>
+          {pokedex.length !== 0 ? (
+            <PokedexResults>
+              {pokedex.map((pokemon, index) => {
+                const maxDecPokemonNumber =
+                  pokemon.id < 10 ? (
+                    <span>{`#00${pokemon.id}`}</span>
+                  ) : (
+                    <span>{`#0${pokemon.id}`}</span>
+                  );
+
+                return (
+                  <li key={index}>
+                    <Link to={`/pokemon/${pokemon.id}`}>
+                      <PokeCard theme={theme}>
+                        <PokeId>
+                          <img
+                            src={pokemon.sprites.front_default}
+                            alt={`${pokemon.name}'s appearance`}
+                          />
+                          <span>{pokemon.name}</span>
+                          {pokemon.id < 100 ? (
+                            <span>{maxDecPokemonNumber}</span>
+                          ) : (
+                            <span>{`#${pokemon.id}`}</span>
+                          )}
+                        </PokeId>
+                        <PokeTypes theme={theme}>
+                          {pokemon.types.map((type, index) => {
+                            return <span key={index}>{type.type.name}</span>;
+                          })}
+                        </PokeTypes>
+                      </PokeCard>
+                    </Link>
+                  </li>
                 );
+              })}
+            </PokedexResults>
+          ) : (
+            <span>No Pokémon Matched Your Search!</span>
+          )}
 
-              return (
-                <li key={index}>
-                  <Link to={`/pokemon/${pokemon.id}`}>
-                    <PokeCard theme={theme}>
-                      <PokeId>
-                        <img
-                          src={pokemon.sprites.front_default}
-                          alt={`${pokemon.name}'s appearance`}
-                        />
-                        <span>{pokemon.name}</span>
-                        {pokemon.id < 100 ? (
-                          <span>{maxDecPokemonNumber}</span>
-                        ) : (
-                          <span>{`#${pokemon.id}`}</span>
-                        )}
-                      </PokeId>
-                      <PokeTypes theme={theme}>
-                        {pokemon.types.map((type, index) => {
-                          return <span key={index}>{type.type.name}</span>;
-                        })}
-                      </PokeTypes>
-                    </PokeCard>
-                  </Link>
-                </li>
-              );
-            })}
-          </PokedexResults>
-
-          <LoadingButton
-            theme={theme}
-            onClick={() => setLoad(load + pagination)}
-          >
-            Load more Pokémon
-          </LoadingButton>
+          {showMore && (
+            <LoadingButton
+              theme={theme}
+              onClick={() => setLoad(load + pagination)}
+            >
+              Load more Pokémon
+            </LoadingButton>
+          )}
         </>
       )}
     </PokedexSection>

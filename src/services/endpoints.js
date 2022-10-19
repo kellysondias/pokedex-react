@@ -7,7 +7,7 @@ export async function getPokemon(name, id) {
     return json
 }
 
-export async function getNamePokemon(pokemonLoad, search) {
+export async function getNamePokemon(pokemonLoad) {
     const url = await fetch(`${baseUrl}?limit=${pokemonLoad}&offset=${offSetValue}`)
     const json = await url.json()
     const pokemonNameList = json.results.map(pokemon => pokemon.name)
