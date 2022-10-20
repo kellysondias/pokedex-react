@@ -9,7 +9,7 @@ export const SearchBar = (props) => {
         onChange={props.change}
       ></input>
       <button onClick={props.filter} style={{ marginTop: "10px" }}>
-        Filter
+        <p>Filter</p>
       </button>
     </div>
   );
