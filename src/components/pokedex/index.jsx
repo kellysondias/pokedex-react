@@ -55,7 +55,7 @@ export const Pokedex = () => {
     const allPokeList = await Promise.all(pokeList);
 
     const pokeSearch = allPokeList.filter((pokemon) => {
-      pokemon.name.includes(search.toLowerCase());
+      return pokemon.name.includes(search.toLowerCase());
     });
 
     setPokedex(pokeSearch);
