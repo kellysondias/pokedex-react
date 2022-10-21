@@ -1,5 +1,4 @@
 export const SearchBar = (props) => {
-  console.log(props);
   return (
     <div>
       <input
@@ -9,7 +8,7 @@ export const SearchBar = (props) => {
         onChange={props.change}
       ></input>
       <button onClick={props.filter} style={{ marginTop: "10px" }}>
-        <p>Filter</p>
+        Filter
       </button>
     </div>
   );

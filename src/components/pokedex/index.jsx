@@ -10,16 +10,15 @@ import { SearchBar } from "../search-bar/search-bar";
 
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState([]);
-  const [load, setLoad] = useState(0);
+  const [load, setLoad] = useState(905);
   const [loading, setLoading] = useState(true);
   const [showMore, setShowMore] = useState(true);
   const [search, setSearch] = useState("");
   const { theme } = useContext(ThemeContext);
-  let pagination = 10;
 
   useEffect(() => {
     async function fetchData() {
-      const namesResponse = await getNamePokemon(pagination, load);
+      const namesResponse = await getNamePokemon(load);
       const pokeList = namesResponse.map(
         async (name) => await getPokemon(name)
       );
@@ -31,25 +30,27 @@ export const Pokedex = () => {
     fetchData();
   }, [load]);
 
-  console.log("SEARCH:", search);
   console.log("POKEDEX:", pokedex);
+  console.log("LOAD:", load);
 
-  function handleChange(e) {
-    setSearch(e.target.value);
-  }
+  const handleChange = (e) => setSearch(e.target.value);
+
+  const handleLoad = () => {
+    const loadPlus = 10;
+    setLoad(load + loadPlus);
+  };
 
   async function filterPokemon() {
     setShowMore(false);
 
     if (search !== "") {
-      pagination = 905;
+      setLoad(905);
     } else {
       setShowMore(true);
-      setLoad(0);
-      pagination = 10;
+      setLoad(10);
     }
 
-    const namesResponse = await getNamePokemon(pagination, load);
+    const namesResponse = await getNamePokemon(load);
     const pokeList = namesResponse.map(async (name) => await getPokemon(name));
     const allPokeList = await Promise.all(pokeList);
 
@@ -59,9 +60,6 @@ export const Pokedex = () => {
 
     setPokedex(pokeSearch);
   }
-
-  console.log("PAGINATION:", pagination);
-  console.log("LOAD:", load);
 
   return (
     <PokedexSection theme={theme}>
@@ -121,10 +119,7 @@ export const Pokedex = () => {
           )}
 
           {showMore && (
-            <LoadingButton
-              theme={theme}
-              onClick={() => setLoad(load + pagination)}
-            >
+            <LoadingButton theme={theme} onClick={() => handleLoad()}>
               Load more Pokémon
             </LoadingButton>
           )}
