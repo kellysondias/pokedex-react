@@ -42,10 +42,10 @@ export const Pokedex = () => {
     setShowMore(false);
 
     if (search !== "") {
-      pagination = 923;
+      pagination = 905;
     } else {
       setShowMore(true);
-      setLoad(0)
+      setLoad(0);
       pagination = 10;
     }
 
@@ -53,16 +53,15 @@ export const Pokedex = () => {
     const pokeList = namesResponse.map(async (name) => await getPokemon(name));
     const allPokeList = await Promise.all(pokeList);
 
-    const pokeSearch = allPokeList.filter((pokemon) =>
-      {console.log("PIKOMON",pokemon)
-        pokemon.name.includes(search.toLowerCase())}
-    );
+    const pokeSearch = allPokeList.filter((pokemon) => {
+      pokemon.name.includes(search.toLowerCase());
+    });
 
     setPokedex(pokeSearch);
   }
 
-  console.log("PAGINATION:", pagination)
-  console.log("LOAD:", load)
+  console.log("PAGINATION:", pagination);
+  console.log("LOAD:", load);
 
   return (
     <PokedexSection theme={theme}>
