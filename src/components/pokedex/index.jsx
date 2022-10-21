@@ -10,7 +10,7 @@ import { SearchBar } from "../search-bar/search-bar";
 
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState([]);
-  const [load, setLoad] = useState(905);
+  const [load, setLoad] = useState(10);
   const [loading, setLoading] = useState(true);
   const [showMore, setShowMore] = useState(true);
   const [search, setSearch] = useState("");
