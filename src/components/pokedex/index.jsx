@@ -30,9 +30,6 @@ export const Pokedex = () => {
     fetchData();
   }, [load]);
 
-  /* console.log("POKEDEX:", pokedex);
-  console.log("LOAD:", load); */
-
   const handleChange = (e) => setSearch(e.target.value);
 
   const handleLoad = () => {
@@ -43,44 +40,19 @@ export const Pokedex = () => {
   async function filterPokemon() {
     setShowMore(false);
 
-    /* if (search !== "") {
-      setLoad(905);
-    } else {
-      setShowMore(true);
-      setLoad(10);
-    } */
-
-    const namesResponse = await getNamePokemon(905)
+    const namesResponse = await getNamePokemon(905);
 
     const pokeSearch = namesResponse.filter((name) => {
-     if (name.includes(search.toLowerCase())) return name
-    })
-
-    const pokeList = pokeSearch.map(async (pokemon) => {
-      await getPokemon(pokemon)
-    })
-
-    console.log("POKE LIST:", pokeList)
-
-    const allPokeList = await Promise.all(pokeList)
-
-    console.log("POKEMON LIST:", allPokeList)
-
-    /* const pokeList = pokeSearch.map(async (name) => await getPokemon(name)) */
-
-    /* const allPokeList = await Promise.all(pokeList) */
-
-    /* setPokedex(allPokeList) */
-
-    /* const namesResponse = await getNamePokemon(load);
-    const pokeList = namesResponse.map(async (name) => await getPokemon(name));
-    const allPokeList = await Promise.all(pokeList);
-
-    const pokeSearch = allPokeList.filter((pokemon) => {
-      return pokemon.name.includes(search.toLowerCase());
+      if (name.includes(search.toLowerCase())) return name;
     });
 
-    setPokedex(pokeSearch);*/
+    const pokeList = pokeSearch.map(
+      async (pokemon) => await getPokemon(pokemon)
+    );
+
+    const allPokeList = await Promise.all(pokeList);
+
+    setPokedex(allPokeList);
   }
 
   return (
