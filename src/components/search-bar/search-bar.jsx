@@ -1,15 +1,19 @@
-export const SearchBar = (props) => {
+import { SearchField } from "../styled-comps/search-field/search-field";
+import { SearchInput } from "../styled-comps/search-input/search-input";
+/* import { SearchButton } from "../styled-comps/search-button/search-button"; */
+
+export const SearchBar = ({placeholder, search, change, filter}) => {
   return (
-    <div>
-      <input
+    <SearchField>
+      <SearchInput
         type="text"
-        placeholder={props.placeholder}
-        value={props.search}
-        onChange={props.change}
-      ></input>
-      <button onClick={props.filter} style={{ marginTop: "10px" }}>
+        placeholder={placeholder}
+        value={search}
+        onChange={change}
+      ></SearchInput>
+      <button onClick={filter}>
         Filter
       </button>
-    </div>
+    </SearchField>
   );
 };
