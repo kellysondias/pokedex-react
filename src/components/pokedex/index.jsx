@@ -7,6 +7,7 @@ import openedPokeball from "../../img/opened-pokeball.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../search-bar/search-bar";
+import { Strings } from "../../strings";
 
 export const Pokedex = () => {
   const [pokedex, setPokedex] = useState([]);
@@ -60,12 +61,12 @@ export const Pokedex = () => {
       {loading ? (
         <div className="loading-screen">
           <img src={loadingIcon} className="loading-icon" alt="Loading..." />
-          <span className="loading-message">Loading...</span>
+          <span className="loading-message">{Strings.loading}</span>
         </div>
       ) : (
         <>
           <SearchBar
-            placeholder="Search a Pokémon..."
+            placeholder={Strings.components.searchBarPlaceholder}
             search={search}
             change={handleChange}
             filter={filterPokemon}
@@ -109,12 +110,12 @@ export const Pokedex = () => {
               })}
             </PokedexResults>
           ) : (
-            <span>No Pokémon Matched Your Search!</span>
+            <span>{Strings.pages.noData}</span>
           )}
 
           {showMore && (
             <LoadingButton theme={theme} onClick={() => handleLoad()}>
-              Load more Pokémon
+              {Strings.components.loadingButton}
             </LoadingButton>
           )}
         </>
