@@ -66,7 +66,6 @@ export const Pokedex = () => {
       ) : (
         <>
           <SearchBar
-            placeholder={Strings.components.searchBarPlaceholder}
             search={search}
             change={handleChange}
             filter={filterPokemon}

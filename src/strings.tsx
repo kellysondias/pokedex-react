@@ -5,6 +5,11 @@ export const Strings = {
     },
     components:{
         loadingButton: "Load more Pokémon",
-        searchBarPlaceholder: "Search a Pokémon..."
+        searchBar: {
+            searchBarHeader: "Search a Pokémon:",
+            button: {
+                alt: "Click to search a Pokémon"
+            }
+        }
     }
 }
