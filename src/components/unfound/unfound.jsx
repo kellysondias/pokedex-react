@@ -1,6 +1,6 @@
 import { Strings } from "../../strings"
 import Missingno from "../../img/unfound.png"
-import { Flex, Image } from "./styles"
+import { Flex, Image, ListItem } from "./styles"
 
 export const Unfound = () => (
     <Flex>
@@ -11,7 +11,7 @@ export const Unfound = () => (
         <span>{Strings.components.unfound.text}</span>
 
         <ul>
-            {Strings.components.unfound.suggestions.map((suggestion) => <li>{suggestion}</li>)}
+            {Strings.components.unfound.suggestions.map((suggestion) => <ListItem>{suggestion}</ListItem>)}
         </ul>
 
     </Flex>

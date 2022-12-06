@@ -13,3 +13,7 @@ export const Image = styled.img`
     width: 100%;
     margin-bottom: 2rem;
 `
+
+export const ListItem = styled.li`
+    list-style: disc;
+`
