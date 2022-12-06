@@ -10,6 +10,12 @@ export const Strings = {
             button: {
                 alt: "Click to search a Pokémon"
             }
+        },
+        unfound: {
+            alt:"Wild MISSINGNO. appeared!",
+            header:"No Pokémon Matched Your Search!",
+            text:"Try these suggestions to find a Pokémon:",
+            suggestions:["See if there's any typo in the Pokémon's name", "Search for only one Pokémon at a time"]
         }
     }
 }

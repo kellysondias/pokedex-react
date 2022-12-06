@@ -6,10 +6,11 @@ import loadingIcon from "../../img/loading.gif";
 import openedPokeball from "../../img/opened-pokeball.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { SearchBar } from "../search-bar/search-bar";
+import { SearchBar } from "../../components/search-bar/search-bar";
 import { Strings } from "../../strings";
+import { Unfound } from "../../components/unfound/unfound";
 
-export const Pokedex = () => {
+export const Home = () => {
   const [pokedex, setPokedex] = useState([]);
   const [load, setLoad] = useState(10);
   const [loading, setLoading] = useState(true);
@@ -109,7 +110,7 @@ export const Pokedex = () => {
               })}
             </PokedexResults>
           ) : (
-            <span>{Strings.pages.noData}</span>
+            <Unfound />
           )}
 
           {showMore && (

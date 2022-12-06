@@ -5,7 +5,7 @@ import { ThemeContext } from "../../contexts/theme-switcher";
 import styled from "styled-components";
 import { useContext } from "react";
 
-export const PokemonDetails = () => {
+export const Pokemon = () => {
   const [pokemon, setPokemon] = useState({
     name: "",
     id: "",

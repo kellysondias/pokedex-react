@@ -7,6 +7,12 @@ export async function getPokemon(name, id) {
     return json
 }
 
+export async function getPokedex(load) {
+    const url = await fetch(`${baseUrl}/?offset=${load}`)
+    const json = await url.json()
+    return json
+}
+
 export async function getNamePokemon(load) {
     const url = await fetch(`${baseUrl}?limit=${load}&offset=${offset}`)
     const json = await url.json()
