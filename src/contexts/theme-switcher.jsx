@@ -22,6 +22,9 @@ export const themes = {
     pokemonProfileBg: "#bee9f3",
     pokemonTypeBg: "#9e2a28",
     pokemonTypeColor: "#f4f4f3",
+    searchBarBorder: "#616161",
+    searchBarHeaderColor: "#000",
+    searchButtonBg: "#ee6b2f"
   },
   lunatone: {
     alt: "Switch to 'light mode'",
@@ -42,6 +45,9 @@ export const themes = {
     pokemonProfileBg: "#2a7585",
     pokemonTypeBg: "#010a2e",
     pokemonTypeColor: "#e2e2e2",
+    searchBarBorder: "#010a2e",
+    searchBarHeaderColor: "#fff",
+    searchButtonBg: "#7d78a3"
   },
 };
 

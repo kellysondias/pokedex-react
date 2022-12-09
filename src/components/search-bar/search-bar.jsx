@@ -6,12 +6,16 @@ import {
   Header,
   Button
 } from "./styles";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/theme-switcher";
 import SearchIcon from "../../img/search-icon.png"
 
 export const SearchBar = ({placeholder, search, change, filter}) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <Flex>
-      <Header>{Strings.components.searchBar.searchBarHeader}</Header>
+      <Header theme={theme}>{Strings.components.searchBar.searchBarHeader}</Header>
 
       <SearchField>
         <SearchInput
@@ -19,12 +23,14 @@ export const SearchBar = ({placeholder, search, change, filter}) => {
           placeholder={placeholder}
           value={search}
           onChange={change}
+          theme={theme}
         ></SearchInput>
 
         <Button
           src={SearchIcon}
           alt={Strings.components.searchBar.button.alt}
           onClick={filter}
+          theme= {theme}
         />
       </SearchField>
     </Flex>

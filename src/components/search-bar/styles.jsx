@@ -12,6 +12,7 @@ export const Header = styled.h2`
     font-weight: 400;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: ${(props) => props.theme.searchBarHeaderColor};
 `
 
 export const SearchField = styled.div`
@@ -24,7 +25,7 @@ export const SearchField = styled.div`
 `
 
 export const SearchInput = styled.input`
-    border: 3px solid #616161;
+    border: 3px solid ${(props) => props.theme.searchBarBorder};
     border-radius: 5px;
     color: #313131;
     margin: 0;
@@ -35,7 +36,7 @@ export const SearchInput = styled.input`
 `
 
 export const Button = styled.img`
-    background-color: #ee6b2f;
+    background-color: ${(props) => props.theme.searchButtonBg};
     padding: 15px 12px;
     border-radius: 5px;
     cursor: pointer;
