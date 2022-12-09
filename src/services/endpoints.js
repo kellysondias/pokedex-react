@@ -1,5 +1,4 @@
-const baseUrl = 'https://pokeapi.co/api/v2/pokemon'
-const offset = 0
+import { baseUrl, offset } from "./variables"
 
 export async function getPokemon(name, id) {
     const url = await fetch(`${baseUrl}/${name || id}`)
