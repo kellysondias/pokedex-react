@@ -10,7 +10,9 @@ export const Flex = styled.div`
 
 export const Image = styled.img`
     width: 100%;
+    padding-top: 1rem;
     margin-bottom: 2rem;
+    background-color: ${(props) => props.theme.unfoundImageBg}
 `
 
 export const Box = styled.div`
@@ -21,8 +23,6 @@ export const Box = styled.div`
     font-size: 1.6rem;
     padding: 50px;
     margin-bottom: 2rem;
-    color: #616161;
-    border: 2px solid #E3350D;
     border-radius: 10px;
     width: 80%;
 `
@@ -35,6 +35,7 @@ export const Header = styled.h2`
 
 export const Text = styled.span`
     margin-bottom: 0.5rem;
+    color: ${(props) => props.theme.unfoundText};
 `
 
 export const List = styled.ul`
@@ -45,7 +46,7 @@ export const List = styled.ul`
 `
 
 export const ListItem = styled.li`
-    color: #919191;
+    color: ${(props) => props.theme.unfoundSuggestions};
     font-size: 1.4rem;
     list-style: disc;
 `
