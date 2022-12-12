@@ -28,7 +28,7 @@ export const Flex = styled.div`
             margin-left: 0;
             text-align: center;
         }
-}
+    }
 `
 
 export const Header = styled.h1`
