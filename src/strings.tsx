@@ -1,4 +1,4 @@
-export const Strings = {
+export const strings = {
     components:{
         loadingButton: "Load more Pokémon",
         searchBar: {

@@ -3,32 +3,6 @@ import solrockSprite from "../img/solrock.png";
 import lunatoneSprite from "../img/lunatone.png";
 
 export const themes = {
-  solrock: {
-    alt: "Switch to 'dark mode'",
-    background: "#e3f3ed",
-    border: "#484860",
-    buttonBackground: "#a071ee",
-    buttonBorder: "#ef713f",
-    cardBackground: "#3890d6",
-    color: "#f4f4f3",
-    headerBackground: "#9e2a28",
-    headerColor: "#f4f4f3",
-    image: lunatoneSprite,
-    pokedexCard: "#d43339",
-    pokemonBorder: "#000",
-    pokemonColor: "#272626",
-    pokemonInfoBg: "#89e5f1",
-    pokemonInfoHeaderBorderColor: "#f4f4f3",
-    pokemonProfileBg: "#bee9f3",
-    pokemonTypeBg: "#9e2a28",
-    pokemonTypeColor: "#f4f4f3",
-    searchBarBorder: "#616161",
-    searchBarHeaderColor: "#000",
-    searchButtonBg: "#ee6b2f",
-    unfoundImageBg: "transparent",
-    unfoundText: "#616161",
-    unfoundSuggestions: "#919191"
-  },
   lunatone: {
     alt: "Switch to 'light mode'",
     background: "#58596f",
@@ -55,6 +29,32 @@ export const themes = {
     unfoundText: "#e2e2e2",
     unfoundSuggestions: "#e2e2e2"
   },
+  solrock: {
+    alt: "Switch to 'dark mode'",
+    background: "#e3f3ed",
+    border: "#484860",
+    buttonBackground: "#a071ee",
+    buttonBorder: "#ef713f",
+    cardBackground: "#3890d6",
+    color: "#f4f4f3",
+    headerBackground: "#9e2a28",
+    headerColor: "#f4f4f3",
+    image: lunatoneSprite,
+    pokedexCard: "#d43339",
+    pokemonBorder: "#000",
+    pokemonColor: "#272626",
+    pokemonInfoBg: "#89e5f1",
+    pokemonInfoHeaderBorderColor: "#f4f4f3",
+    pokemonProfileBg: "#bee9f3",
+    pokemonTypeBg: "#9e2a28",
+    pokemonTypeColor: "#f4f4f3",
+    searchBarBorder: "#616161",
+    searchBarHeaderColor: "#000",
+    searchButtonBg: "#ee6b2f",
+    unfoundImageBg: "transparent",
+    unfoundText: "#616161",
+    unfoundSuggestions: "#919191"
+  }
 };
 
 export const ThemeContext = createContext({});

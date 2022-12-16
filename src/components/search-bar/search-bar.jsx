@@ -1,4 +1,4 @@
-import { Strings } from "../../strings";
+import { strings } from "../../strings";
 import {
   Flex,
   SearchField,
@@ -15,7 +15,7 @@ export const SearchBar = ({placeholder, search, change, filter}) => {
 
   return (
     <Flex>
-      <Header theme={theme}>{Strings.components.searchBar.searchBarHeader}</Header>
+      <Header theme={theme}>{strings.components.searchBar.searchBarHeader}</Header>
 
       <SearchField>
         <SearchInput
@@ -28,7 +28,7 @@ export const SearchBar = ({placeholder, search, change, filter}) => {
 
         <Button
           src={SearchIcon}
-          alt={Strings.components.searchBar.button.alt}
+          alt={strings.components.searchBar.button.alt}
           onClick={filter}
           theme= {theme}
         />

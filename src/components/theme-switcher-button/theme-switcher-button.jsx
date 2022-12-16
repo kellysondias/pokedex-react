@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+import { SwitcherButton } from "./styles";
 import { ThemeContext, themes } from "../../contexts/theme-switcher";
 
 export const ThemeSwitcherButton = () => {
@@ -17,27 +17,3 @@ export const ThemeSwitcherButton = () => {
     </SwitcherButton>
   );
 };
-
-const SwitcherButton = styled.div`
-  display: flex;
-
-  img {
-    cursor: pointer;
-    max-width: 76px;
-  }
-
-  @media (max-width: 620px) {
-    align-self: flex-end;
-    margin-right: 15px;
-
-    img {
-      max-width: 61px;
-    }
-  }
-
-  @media (max-width: 375px) {
-    img {
-      max-width: 58px;
-    }
-  }
-`;

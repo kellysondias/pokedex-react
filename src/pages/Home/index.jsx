@@ -7,7 +7,7 @@ import openedPokeball from "../../img/opened-pokeball.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../../components/search-bar/search-bar";
-import { Strings } from "../../strings";
+import { strings } from "../../strings";
 import { Unfound } from "../../components/unfound/unfound";
 
 export const Home = () => {
@@ -62,7 +62,7 @@ export const Home = () => {
       {loading ? (
         <div className="loading-screen">
           <img src={loadingIcon} className="loading-icon" alt="Loading..." />
-          <span className="loading-message">{Strings.loading}</span>
+          <span className="loading-message">{strings.loading}</span>
         </div>
       ) : (
         <>
@@ -115,7 +115,7 @@ export const Home = () => {
 
           {showMore && (
             <LoadingButton theme={theme} onClick={() => handleLoad()}>
-              {Strings.components.loadingButton}
+              {strings.components.loadingButton}
             </LoadingButton>
           )}
         </>

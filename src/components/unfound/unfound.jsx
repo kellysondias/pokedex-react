@@ -1,4 +1,4 @@
-import { Strings } from "../../strings"
+import { strings } from "../../strings"
 import Missingno from "../../img/unfound.png"
 import { Box, Flex, Header, Image, List, ListItem, Text } from "./styles"
 import { useContext } from "react";
@@ -11,17 +11,18 @@ export const Unfound = () => {
         <Flex>
             <Image
                 src={Missingno}
-                alt={Strings.components.unfound.alt}
+                alt={strings.components.unfound.alt}
                 theme={theme}
             />
 
             <Box>
-                <Header>{Strings.components.unfound.header}</Header>
+                <Header>{strings.components.unfound.header}</Header>
             
-                <Text theme={theme}>{Strings.components.unfound.text}</Text>
+                <Text theme={theme}>{strings.components.unfound.text}</Text>
             
                 <List>
-                    {Strings.components.unfound.suggestions.map((suggestion) => <ListItem theme={theme}>{suggestion}</ListItem>)}
+                    {strings.components.unfound.suggestions.map((suggestion) => <ListItem theme={theme}>{suggestion}</ListItem>)
+                    }
                 </List>
             </Box>
         </Flex>
