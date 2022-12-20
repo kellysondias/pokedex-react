@@ -20,6 +20,11 @@ export const strings = {
     loading:"Loading...",
     logo:"Pokedéx",
     pages: {
-        noData:"No Pokémon Matched Your Search!"
+        pokemon: {
+            abilitiesHeader: "Abilities",
+            infoHeader: "Info",
+            movesHeader: "Moves",
+            typesHeader: "Types"
+        }
     },
 }

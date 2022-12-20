@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAbilities, getPokemon } from "../../services/endpoints";
 import { ThemeContext } from "../../contexts/theme-switcher";
-import styled from "styled-components";
+import { 
+  PokemonSection,
+  PokedexCard,
+  PokeId,
+  PokeInfo
+ } from "./styles";
 import { useContext } from "react";
+import PokemonNumber from "../../components/pokemon-number/pokemon-number";
+import { strings } from "../../services/strings";
 
 export const Pokemon = () => {
   const [pokemon, setPokemon] = useState({
@@ -19,13 +26,6 @@ export const Pokemon = () => {
   const { id } = useParams();
 
   const { theme } = useContext(ThemeContext);
-
-  const maxDecPokemonNumber =
-    pokemon.id < 10 ? (
-      <span>{`#00${pokemon.id}`}</span>
-    ) : (
-      <span>{`#0${pokemon.id}`}</span>
-    );
 
   useEffect(() => {
     async function fetchPokemon() {
@@ -54,11 +54,7 @@ export const Pokemon = () => {
         <PokeId theme={theme}>
           <div className="name-id">
             <span className="name">{pokemon.name.toUpperCase()}</span>
-            {pokemon.id < 100 ? (
-              <span>{maxDecPokemonNumber}</span>
-            ) : (
-              <span>{`#${pokemon.id}`}</span>
-            )}
+            <PokemonNumber id={pokemon.id} />
           </div>
           <div className="image">
             <img src={pokemon.image} alt={`${pokemon.name}'s appearance`}></img>
@@ -66,34 +62,34 @@ export const Pokemon = () => {
         </PokeId>
 
         <PokeInfo theme={theme}>
-          <h2>Info</h2>
+          <h2>{strings.pages.pokemon.infoHeader}</h2>
 
           <div className="type" theme={theme}>
-            <h3>Type</h3>
+            <h3>{strings.pages.pokemon.typesHeader}</h3>
             <ul>
-              {pokemon.types.map((type) => {
-                return <li className="type-name">{type.type.name}</li>;
+              {pokemon.types.map((type, index) => {
+                return <li key={index} className="type-name">{type.type.name}</li>;
               })}
             </ul>
           </div>
 
           <div className="moves">
-            <h3>Moves</h3>
+            <h3>{strings.pages.pokemon.movesHeader}</h3>
             <ul>
-              {pokemon.moves.map((move) => {
-                return <li className="move">{move.move.name}</li>;
-              })}
+              {pokemon.moves.map((move, index) => 
+                <li key={index} className="move">{move.move.name}</li>
+              )}
             </ul>
           </div>
 
           <div className="abilities">
-            <h3>Abilities</h3>
-            {abilities.map((ability) => {
+            <h3>{strings.pages.pokemon.abilitiesHeader}</h3>
+            {abilities.map((ability, index) => {
               return (
-                <div className="ability">
+                <div key={index} className="ability">
                   <h3>{ability.name}</h3>
-                  {ability.effect_entries.slice(1).map((description) => (
-                    <p>{description.effect}</p>
+                  {ability.effect_entries.slice(1).map((description, index) => (
+                    <p key={index}>{description.effect}</p>
                   ))}
                 </div>
               );
@@ -104,161 +100,3 @@ export const Pokemon = () => {
     </PokemonSection>
   );
 };
-
-const PokemonSection = styled.section`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: ${(props) => props.theme.background};
-`;
-
-const PokedexCard = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-  margin: 50px auto;
-  width: 80%;
-  border-radius: 1.5rem;
-  background-color: ${(props) => props.theme.pokedexCard};
-`;
-
-const PokeId = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  max-width: 300px;
-  width: 100%;
-  margin-right: 4.5rem;
-  color: ${(props) => props.theme.pokemonColor};
-
-  .name-id {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-    padding: 0.2rem 3rem;
-  }
-
-  .name-id span {
-    text-align: center;
-    font-size: 23px;
-  }
-
-  .name {
-    margin-right: 1rem;
-  }
-
-  .image {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .name-id,
-  .image {
-    background-color: ${(props) => props.theme.pokemonProfileBg};
-    border: 0.2rem solid ${(props) => props.theme.pokemonBorder};
-    border-radius: 1rem;
-    width: 100%;
-  }
-
-  .image img {
-    width: 350px;
-  }
-
-  @media (max-width: 1006px) {
-    margin-right: 0.4rem;
-    margin-bottom: 1rem;
-  }
-
-  @media (max-width: 450px) {
-    width: 60%;
-
-    .name-id span {
-      font-size: 1.5rem;
-    }
-  }
-`;
-
-const PokeInfo = styled.section`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  color: ${(props) => props.theme.pokemonColor};
-  border: 0.2rem solid ${(props) => props.theme.pokemonBorder};
-  border-radius: 1rem;
-  background-color: ${(props) => props.theme.pokemonInfoBg};
-
-  h2 {
-    font-size: 4.5rem;
-    border-bottom: 2px solid
-      ${(props) => props.theme.pokemonInfoHeaderBorderColor};
-    width: 100%;
-  }
-
-  h3 {
-    font-size: 2.7rem;
-  }
-
-  li {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 1.6rem;
-  }
-
-  .type ul {
-    display: flex;
-  }
-
-  .type-name {
-    font-size: 2.3rem;
-    margin: 0.5rem auto;
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    color: ${(props) => props.theme.pokemonTypeColor};
-    background-color: ${(props) => props.theme.pokemonTypeBg};
-  }
-
-  .type-name:first-child {
-    margin-right: 0.5rem;
-  }
-
-  .abilities h3 {
-    margin-bottom: 5px;
-  }
-
-  .moves .move,
-  .abilities .ability {
-    margin: 0.7rem auto;
-  }
-
-  @media (max-width: 450px) {
-    h2 {
-      font-size: 3.5rem;
-    }
-
-    h3 {
-      font-size: 2rem;
-    }
-
-    li {
-      font-size: 1.5rem;
-    }
-
-    p {
-      font-size: 1.5rem;
-    }
-
-    .type-name {
-      font-size: 1.5rem;
-    }
-  }
-`;

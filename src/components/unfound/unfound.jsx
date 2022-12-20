@@ -1,4 +1,4 @@
-import { strings } from "../../strings"
+import { strings } from "../../services/strings"
 import Missingno from "../../img/unfound.png"
 import { Box, Flex, Header, Image, List, ListItem, Text } from "./styles"
 import { useContext } from "react";
