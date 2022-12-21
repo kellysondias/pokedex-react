@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/theme-switcher";
 import { ThemeSwitcherButton } from "../theme-switcher-button/theme-switcher-button";
-import { strings } from "../../strings";
+import { strings } from "../../services/strings";
 import { Flex } from "./styles";
 import { Link } from "react-router-dom";
 
