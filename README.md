@@ -243,10 +243,4 @@ cd pokedex-react
 npm install && npm run dev
 ```
 
-## Agradecimentos
-- [pedromarques-dev](https://github.com/pedromarques-dev)
-- [cadudias](https://github.com/cadudias)
-- [roberto-hofstetter](https://github.com/roberto-hofstetter)
-- [pablovianas](https://github.com/pablovianas)
-
 Obrigado por visitar meu repositório! Fique à vontade para comentar ou me dar sugestões :) .
