@@ -1,7 +1,6 @@
 # Pokédex
 
 ## Conteúdo
-   - [Status](#status)
    - [Sobre](#sobre)
         - [Descrição](#descrição)
         - [Tecnologias utilizadas](#tecnologias-utilizadas)
@@ -12,12 +11,6 @@
         - [Context API](#strongcontext-apistrong)
    - [Como usar](#como-usar)
    - [Agradecimentos](#agradecimentos)
-
-## Status
- 
- <img style="width: 250px;" src="src/img/cachorro-violinista.jpg" alt="Ae cachorro violinista, toca um Changes - Black Sabbath que o pai tá passando por mudanças ;(">
-
- ### Pokédex: Beta (funcionalidades principais finalizadas) 👨‍💻.
 
  <br>
 
